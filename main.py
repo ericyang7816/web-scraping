@@ -8,11 +8,13 @@
 from urllib import parse
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+
 import graph
 
 star_relationships = {}
 pages = []
 MAX_TRY = 6
+
 
 name = input("请输入你要查询的明星：")
 url = 'https://baike.baidu.com/item/'+parse.quote_plus(name)
@@ -28,7 +30,9 @@ def find_star(url):
         star_dict = {}
         pages.append(url)  # 加入到总的pages列表
         html = urlopen(url)
+
         bsObj = BeautifulSoup(html, 'html.parser')
+
         star_name = bsObj.find(
             'dd', {"class": "lemmaWgt-lemmaTitle-title"}).h1.get_text()    # 明星的名字(str)
         try:
@@ -59,4 +63,6 @@ def find_star(url):
 
 
 find_star(url)
+
 print(star_relationships)
+
