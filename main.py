@@ -11,10 +11,11 @@ from bs4 import BeautifulSoup
 
 import graph
 import read
+import search
 
 star_relationships = {}
 pages = []
-MAX_TRY = 3
+MAX_TRY = 12
 
 
 name = input("请输入你要查询的明星：")
@@ -74,4 +75,8 @@ graph.graph_generate(star_relationships)
 
 name=input('请输入要查询的明星: ')
 print()
-read.read_one_star(name,star_relationships)
+if name in star_relationships.keys():
+    read.read_one_star(name,star_relationships)
+else:
+    search.non_star_search(name,star_relationships)
+
