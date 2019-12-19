@@ -14,7 +14,7 @@ import read
 
 star_relationships = {}
 pages = []
-MAX_TRY = 6
+MAX_TRY = 3
 
 
 name = input("请输入你要查询的明星：")
@@ -28,7 +28,7 @@ def find_star(url):
     if MAX_TRY == 0:
         return
     else:
-        star_dict = {}
+        star_relation_list = []  # 明星关系总列表
         pages.append(url)  # 加入到总的pages列表
         html = urlopen(url)
 
@@ -53,8 +53,9 @@ def find_star(url):
             relationship = star.find("div", {"class": "name"}).get_text()  # 关系
             lenth2 = len(relationship)
             lenth = lenth2 - lenth1
-            star_dict[relationship[0:lenth]] = name
-        star_relationships[star_name] = star_dict        # 将明星关系字典加入总字典
+            one_relation = [relationship[0:lenth],name]
+            star_relation_list.append(one_relation)
+        star_relationships[star_name] = star_relation_list       # 将明星关系列表加入总字典
         for url in url_list:
             if "href" in url.attrs:
                 new_page = "https://baike.baidu.com"+url.attrs["href"]
