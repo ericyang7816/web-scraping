@@ -5,13 +5,11 @@
 
 # Author:jbqiangqiangqiang
 
-import main
-
-def non_star_search(name):
-    for star in main.star_relationships:
+def non_star_search(name,star_relationships):
+    for star in star_relationships:
         star_relationship=star_relationships[star]
-        if name in star_relationship.values():
-            relationship=list(star_relationship.keys())[list(star_relationship.values()).index(name)]
-            print(name,"是",star,"的",relationship)
+        for relationship in star_relationship:
+            if name==relationship[1]:
+                print("{}是{}的{}".format(name,star,relationship[0]))
 
 
