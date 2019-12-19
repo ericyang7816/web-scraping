@@ -10,6 +10,7 @@ def read_one_star(name,star_relationships):
     if name not in star_relationships.keys():
         return 0
     print(name+"的关系表：")
+    print('----------------')
     relationships=star_relationships[name]
     new_dic={}
     for relationship_and_name in relationships:
@@ -20,10 +21,10 @@ def read_one_star(name,star_relationships):
             name_list=exist_name_list+name_list
         new_dic[relationship]=name_list
     for relationship in new_dic:
-        print(relationship+":",end="")
-        for s_name in new_dic[relationship]
-        print (s_name+",",end="")
-        print("\n")
-    
+        print(relationship+": ",end="")
+        for s_name in new_dic[relationship]:
+            print(s_name+" ",end="")
+        print()
+    print('----------------')
 
 

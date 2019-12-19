@@ -14,11 +14,7 @@ import pylab
 def graph_generate(star_relationships):
     g=nx.Graph()
     for star in star_relationships:
-        print('star')
-        print(star)
         for relate_figure in star_relationships[star]:
-            print('relate-figure')
-            print(relate_figure)
             g.add_edge(star,relate_figure[1])
     nx.draw(g,with_labels=True,node_size=3600,font_size=20,node_color='#FFE4B5')
     plt.show()
