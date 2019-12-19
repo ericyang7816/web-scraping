@@ -72,5 +72,6 @@ print(star_relationships)
 
 graph.graph_generate(star_relationships)
 
-#name=input('请输入要查询的明星: ')
-#read.read_one_star(name,star_relationships)
+name=input('请输入要查询的明星: ')
+print()
+read.read_one_star(name,star_relationships)
