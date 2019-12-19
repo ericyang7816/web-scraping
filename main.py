@@ -15,7 +15,7 @@ import search
 
 star_relationships = {}
 pages = []
-MAX_TRY = 12
+MAX_TRY = 6
 
 
 name = input("请输入你要查询的明星：")
@@ -72,11 +72,11 @@ print(star_relationships)
 
 
 graph.graph_generate(star_relationships)
-
-name=input('请输入要查询的明星: ')
-print()
-if name in star_relationships.keys():
-    read.read_one_star(name,star_relationships)
-else:
-    search.non_star_search(name,star_relationships)
+while True:
+    name=input('请输入要查询的人物: ')
+    print()
+    if name in star_relationships.keys():
+        read.read_one_star(name,star_relationships)
+    else:
+        search.non_star_search(name,star_relationships)
 
