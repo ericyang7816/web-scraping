@@ -50,7 +50,7 @@ def find_star(url):
         for star in star_list:
             name = star.find("div", {"class": "name"}).em.get_text()  # 名字
             lenth1 = len(name)
-            relationship = star.find("div", {"class": "name"}).get_text()  # 关系
+            relationship = star.find("div", {"class": "name"}).get_text()  # 关系+名字
             lenth2 = len(relationship)
             lenth = lenth2 - lenth1
             one_relation = [relationship[0:lenth],name]
