@@ -37,13 +37,13 @@ def find_star(url):
         bsObj = BeautifulSoup(html, 'html.parser')
         star_name = bsObj.find(
             'dd', {"class": "lemmaWgt-lemmaTitle-title"}).h1.get_text()    # 查找明星的名字
-        try:
-            star_list = bsObj.find(
-                "div", {"class": "viewport", "id": "slider_relations"}).find_all("li")
-        except Exception:
-            return  # 如果当前人物不存在关系，就返回继续查找
+        star_location = bsObj.find(
+            "div", {"class": "viewport", "id": "slider_relations"})
+        if star_location is not None:
+            star_list=star_location.find_all("li")
         else:
-            MAX_TRY = MAX_TRY - 1
+            return  # 如果当前人物不存在关系，就返回继续查找
+        MAX_TRY = MAX_TRY - 1    
         star_list = bsObj.find(
             "div", {"class": "viewport", "id": "slider_relations"}).find_all("li")
         url_list = bsObj.find(
