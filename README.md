@@ -7,7 +7,7 @@
 
 ## Profile
 
-We use the beautifulsoup4 to generate the relationship network between figures using data from [百度百科](https://baike.baidu.com), and add  functions of searching a figure and displaying the relationship graph.
+We use the to generate the relationship network between figures using data from [百度百科](https://baike.baidu.com) which is formed by *beautifulsoup*, and add  functions of searching a figure and displaying the relationship graph.
 
 ## Environment
 
