@@ -35,8 +35,11 @@ def find_star(url):
         except Exception:
             return
         bsObj = BeautifulSoup(html, 'html.parser')
-        star_name = bsObj.find(
-            'dd', {"class": "lemmaWgt-lemmaTitle-title"}).h1.get_text()    # 查找明星的名字
+        try:
+            star_name = bsObj.find(
+                'dd', {"class": "lemmaWgt-lemmaTitle-title"}).h1.get_text()    # 查找明星的名字
+        except Exception:
+            return
         star_location = bsObj.find(
             "div", {"class": "viewport", "id": "slider_relations"})
         if star_location is not None:
