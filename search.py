@@ -15,13 +15,12 @@ def non_center_search(name, star_relationships):
         star_relationship = star_relationships[star]
         for relationship in star_relationship:
             if name == relationship[1]:  # 使用format格式化字符串方便输出
-                print("{}是{}的{}".format(name, star, relationship[0])) 
+                print("{}的{}".format(star, relationship[0]))
                 tag = 1
     if not tag:
         print("Error: 查无此人")
     print('----------------')
     print('\n')
-    
 
 
 def center_search(name, star_relationships):
@@ -32,7 +31,7 @@ def center_search(name, star_relationships):
     print('----------------')
     relationships = star_relationships[name]
     new_dic = {}
-    final_list=[]
+    final_list = []
     for relationship_and_name in relationships:
         relationship = relationship_and_name[0]
         name_list = [relationship_and_name[1]]  # 将姓名存储到列表中
@@ -45,13 +44,13 @@ def center_search(name, star_relationships):
         for s_name in new_dic[relationship]:
             print(s_name+" ", end="")
         print()
-    for pair in new_dic.values():   #整合明星与相关的人物列表方便查找
+    for pair in new_dic.values():  # 整合明星与相关的人物列表方便查找
         final_list.extend(pair)
     for star in star_relationships:
         star_relationship = star_relationships[star]
         for relationship in star_relationship:
             if name == relationship[1]:
-                if star not in final_list:  
+                if star not in final_list:
                     print("{}的{}".format(star, relationship[0]))
     print('----------------')
     print('\n')
