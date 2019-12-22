@@ -1,7 +1,7 @@
 # Python Web-scraping Project
 
 ![](https://img.shields.io/badge/School-CUFE-blue)
-![](https://img.shields.io/badge/version-v1.0.0-orange)
+![](https://img.shields.io/badge/version-v1.1.0-orange)
 ![](https://img.shields.io/badge/base-anaconda-brightgreen)
 
 
