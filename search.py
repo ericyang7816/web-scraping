@@ -52,6 +52,6 @@ def center_search(name, star_relationships):
         for relationship in star_relationship:
             if name == relationship[1]:
                 if star not in final_list:  
-                    print("{}是{}的{}".format(name, star, relationship[0]))
+                    print("{}的{}".format(star, relationship[0]))
     print('----------------')
     print('\n')
