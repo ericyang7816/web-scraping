@@ -60,7 +60,10 @@ def find_star(url):
         star_relationships[star_name] = star_relation_list  # 将明星关系列表加入总字典
         for url in url_list:
             if "href" in url.attrs:
-                new_page = "https://baike.baidu.com"+url.attrs["href"]
+                if  "https://baike.baidu.com" not in url.attrs["href"]:     #如果是内链，则添加前缀后添加
+                    new_page = "https://baike.baidu.com"+url.attrs["href"]
+                else:       #如果是外链，则直接添加                                     
+                    new_page=url.attrs["href"]
                 if new_page not in pages:
                     pages.append(new_page)
                     find_star(new_page)
