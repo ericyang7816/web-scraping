@@ -39,6 +39,17 @@ def center_search(name, star_relationships):
             exist_name_list = new_dic[relationship]
             name_list = exist_name_list+name_list
         new_dic[relationship] = name_list
+
+    for one_name in star_relationships.keys():               #将对与其相关的所有关系进行查找，对new_dic进行关系的补充
+        one_relationships=star_relationships[one_name]
+        for one_relationship in one_relationships.keys():
+            if one_relationships[one_relationship]==name:    #确认与查找的人是否相关
+                if one_relationship not in new_dic.keys():   #如果关系不存在，则添加
+                    new_dic[one_relationship]=[one_name]
+                if one_name not in new_dic[one_relationship]:#如果仁为添加进关系，则添加
+                    new_dic[one_relationship]+=[one_name] 
+
+
     for relationship in new_dic:
         print(relationship+": ", end="")
         for s_name in new_dic[relationship]:
