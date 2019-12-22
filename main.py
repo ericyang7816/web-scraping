@@ -43,10 +43,10 @@ def find_star(url):
         star_location = bsObj.find(
             "div", {"class": "viewport", "id": "slider_relations"})
         if star_location is not None:
-            star_list=star_location.find_all("li")
+            star_list = star_location.find_all("li")
         else:
             return  # 如果当前人物不存在关系，就返回继续查找
-        MAX_TRY = MAX_TRY - 1    
+        MAX_TRY = MAX_TRY - 1
         star_list = bsObj.find(
             "div", {"class": "viewport", "id": "slider_relations"}).find_all("li")
         url_list = bsObj.find(
@@ -63,14 +63,18 @@ def find_star(url):
         star_relationships[star_name] = star_relation_list  # 将明星关系列表加入总字典
         for url in url_list:
             if "href" in url.attrs:
-                new_page = "https://baike.baidu.com"+url.attrs["href"]
+                # 如果是内链，则添加前缀后添加
+                if "baike.baidu.com" not in url.attrs["href"]:
+                    new_page = "https://baike.baidu.com"+url.attrs["href"]
+                else:  # 如果是外链，则直接添加
+                    new_page = url.attrs["href"]
                 if new_page not in pages:
                     pages.append(new_page)
                     find_star(new_page)
 
 
 find_star(url)
-if star_relationships: #当查找到人物关系时，向下执行
+if star_relationships:  # 当查找到人物关系时，向下执行
     graph.graph_generate(star_relationships)  # 生成关系图
     while True:
         name = input('请输入要查询的人物: ')
