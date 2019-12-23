@@ -38,10 +38,10 @@ def find_star(url):
         try:
             star_name = bsObj.find(
                 'dd', {"class": "lemmaWgt-lemmaTitle-title"}).h1.get_text()    # 查找明星的名字
+            star_location = bsObj.find(
+                "div", {"class": "viewport", "id": "slider_relations"})
         except Exception:
             return
-        star_location = bsObj.find(
-            "div", {"class": "viewport", "id": "slider_relations"})
         if star_location is not None:
             star_list = star_location.find_all("li")
         else:
@@ -79,7 +79,7 @@ if star_relationships:  # 当查找到人物关系时，向下执行
     while True:
         name = input('请输入要查询的人物: ')
         print()
-        # 如果遍历过要查询的人物的关系，就以TA为中心查找关系，并且以其他人为中心查找与TA的关系
+        # 如果遍历过要查询的人物的关系，就返回TA的关系，并且以其他人为中心查找与TA的关系
         # 否则只返回以其他人为中心与TA的关系
         if name in star_relationships.keys():
             search.center_search(name, star_relationships)

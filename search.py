@@ -25,8 +25,6 @@ def non_center_search(name, star_relationships):
 
 def center_search(name, star_relationships):
     '''Show the relationships of a person who is the center of a relationship.'''
-    if name not in star_relationships.keys():
-        return 0
     print(name+"的关系情况：")
     print('----------------')
     relationships = star_relationships[name]
